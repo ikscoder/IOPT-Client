@@ -1,0 +1,28 @@
+﻿<UserControl x:Class="Client.Pages.Settings"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Client.Pages"
+             xmlns:classes="clr-namespace:Client.Classes"
+             mc:Ignorable="d" 
+             d:DesignHeight="500" d:DesignWidth="1033.402" BorderBrush="{DynamicResource ButtonClickColor}" BorderThickness="1">
+    <Grid Background="{DynamicResource BackgroundColor}" Margin="0">
+
+        <ComboBox x:Name="styleBox" Margin="0,69,0,0" HorizontalAlignment="Center" Width="133" Height="25" VerticalAlignment="Top" DataContext="{Binding}"/>
+        <ComboBox x:Name="langBox" Margin="0,128,0,0" HorizontalAlignment="Center" Width="133" Height="25" VerticalAlignment="Top" DataContext="{Binding}"/>
+        <Label x:Name="setlabel" Content="{DynamicResource Setid1}" Margin="0,38,0,0" VerticalAlignment="Top" Foreground="{DynamicResource OnLightFontColor}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.ColumnSpan="2"/>
+        <Label x:Name="setlabel1" Content="{DynamicResource Setid2}" Margin="0,99,0,0" VerticalAlignment="Top" Foreground="{DynamicResource OnLightFontColor}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.ColumnSpan="2"/>
+        <Label x:Name="setlabel3" Content="{DynamicResource Setid4}" VerticalAlignment="Top" Foreground="{DynamicResource OnLightFontColor}" VerticalContentAlignment="Center" Margin="0,163,0,0" HorizontalContentAlignment="Center" SnapsToDevicePixels="True" Grid.ColumnSpan="2"/>
+        <ComboBox x:Name="setuintBox" HorizontalAlignment="Center" Margin="0,194,0,0" VerticalAlignment="Top" Width="134" DataContext="{Binding}"/>
+        <CheckBox x:Name="setcheckBox1" IsChecked="{Binding AutoUpdate, Mode=TwoWay, Source={x:Static classes:Settings.Current}}" Content="{DynamicResource Mainid3}" HorizontalAlignment="Center" Margin="0,241,0,0" VerticalAlignment="Top" Foreground="{DynamicResource OnLightFontColor}" />
+        <Rectangle Height="232" Stroke="Black" VerticalAlignment="Top" MouseDown="Button3_MouseDown" StrokeThickness="0" Margin="0,266,-10,0">
+            <Rectangle.Fill>
+                <RadialGradientBrush x:Name="radial" MappingMode="Absolute" Center="0,0" GradientOrigin="0,0" RadiusX="0" RadiusY="0">
+                    <GradientStop Color="#00ffffff" Offset="1"/>
+                    <GradientStop Color="#37474f"/>
+                </RadialGradientBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+    </Grid>
+</UserControl>

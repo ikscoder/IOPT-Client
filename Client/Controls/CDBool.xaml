@@ -1,0 +1,61 @@
+﻿<UserControl x:Class="Client.Controls.CDBool"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Client.Controls"
+             xmlns:oxy="http://oxyplot.org/wpf"
+             mc:Ignorable="d" BorderThickness="2" BorderBrush="{DynamicResource MainColor}" Foreground="{DynamicResource OnLightFontColor}" Margin="4" Height="180" Width="270">
+    <Grid Background="{DynamicResource AlternativeBackgroundColor}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <Label x:Name="Title" Content="Title" Foreground="{DynamicResource OnDarkFontColor}" BorderBrush="{DynamicResource MainColor}" BorderThickness="0,0,2,0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"  FontFamily="{DynamicResource FontFamilyHighlight}" FontSize="22" FontWeight="Bold" Background="{DynamicResource MainColor}" Margin="0,0,65,0"/>
+        <Label x:Name="labelValue" Content="{DynamicResource Viewid4}" Foreground="{DynamicResource OnLightFontColor}" FontFamily="{DynamicResource FontFamilyMain}" FontSize="{DynamicResource FontSizeBig}" HorizontalContentAlignment="Center" BorderBrush="{DynamicResource MainColor}" BorderThickness="0" Margin="0,0,74,0" VerticalContentAlignment="Center" HorizontalAlignment="Right" Width="102" Height="45" VerticalAlignment="Bottom" Grid.Row="1"/>
+        <CheckBox x:Name="ValueBox" Margin="124,18,0,0" VerticalAlignment="Top" Height="20" Grid.Row="1" HorizontalAlignment="Left" Width="36"/>
+        <Popup x:Name="pop" AllowsTransparency="True" Placement="Mouse" HorizontalOffset="-200" IsOpen="False" StaysOpen="True" PopupAnimation="Fade">
+            <Grid>
+                <Button x:Name="BExit" Width="35" Style="{DynamicResource TranspButton}" Margin="0,0,565,0" VerticalAlignment="Top" Height="35" HorizontalAlignment="Right" Click="BExit_Click" Panel.ZIndex="10">
+                    <Border>
+                        <Path Data="{StaticResource Exit}" Fill="{DynamicResource MainColor}" Stretch="Uniform">
+                        </Path>
+                    </Border>
+                </Button>
+                <oxy:Plot x:Name="Plot" Foreground="{DynamicResource OnLightFontColor}" DefaultTrackerTemplate="{DynamicResource OxyLineTemplate}" Width="600" Height="300">
+                    <oxy:Plot.Axes>
+                        <oxy:DateTimeAxis MajorGridlineStyle="None" MinorGridlineStyle="None" IntervalLength="80"/>
+                        <oxy:LinearAxis MajorGridlineStyle="None" MinorGridlineStyle="None" IntervalLength="80" AbsoluteMaximum="1" AbsoluteMinimum="0"/>
+                    </oxy:Plot.Axes>
+                    <oxy:LineSeries x:Name="lineserie" Color="#F62A00" StrokeThickness="1" MarkerSize="3" LineStyle="Solid" MarkerType="Cross"/>
+                </oxy:Plot>
+            </Grid>
+        </Popup>
+        <Button x:Name="BChart" Style="{DynamicResource TranspButton}" Margin="206,0,0,28" VerticalAlignment="Bottom" HorizontalAlignment="Left" Click="BExit_Click" Width="50" Height="50">
+            <Border>
+                <Path Data="{StaticResource Chart}" Fill="{DynamicResource MainColor}" Stretch="Uniform">
+                </Path>
+            </Border>
+        </Button>
+        <Button x:Name="BLoading" Style="{DynamicResource TranspButton}" Margin="35,0,0,42" VerticalAlignment="Bottom" HorizontalAlignment="Left" Visibility="Hidden" Grid.Row="1" Width="36" Height="36" RenderTransformOrigin="0.5, 0.5">
+            <Border>
+                <Path Data="{StaticResource Loading}" Fill="{DynamicResource MainColor}" Stretch="Uniform">
+                </Path>
+            </Border>
+            <Button.RenderTransform>
+                <RotateTransform x:Name="noFreeze" />
+            </Button.RenderTransform>
+            <Button.Triggers>
+                <EventTrigger RoutedEvent="Loaded">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation
+            Storyboard.TargetProperty="(Rectangle.RenderTransform).(RotateTransform.Angle)"
+            To="-360" Duration="0:0:1" RepeatBehavior="Forever" />
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </Button.Triggers>
+        </Button>
+    </Grid>
+</UserControl>

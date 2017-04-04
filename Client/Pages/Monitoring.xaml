@@ -1,0 +1,37 @@
+﻿<UserControl x:Class="Client.Pages.Monitoring"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Client.Pages"
+             xmlns:classes="clr-namespace:Client.Classes"
+             mc:Ignorable="d" 
+             d:DesignHeight="500" d:DesignWidth="1000">
+    <Grid Background="{DynamicResource BackgroundColor}" UseLayoutRounding="True">
+        <Grid x:Name="lmgrid" Margin="10,10,0,10" HorizontalAlignment="Left" Width="192">
+            <ComboBox x:Name="Lmodels" Margin="10,26,10,0" VerticalAlignment="Top" DataContext="{Binding}" BorderThickness="1" BorderBrush="{DynamicResource OnLightFontColor}"/>
+            <ListBox x:Name="Lobjects" Margin="0,75,0,0" ItemsSource="{Binding SelectedItem.(classes:Model.Objects), ElementName=Lmodels}" BorderBrush="{DynamicResource MainColor}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="145"/>
+                                <ColumnDefinition Width="20"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Foreground="{DynamicResource OnDarkFontColor}" Content="{Binding Name}" HorizontalAlignment="Left" Grid.Column="0"/>
+                            <Button Tag="{Binding}" Width="25" Style="{DynamicResource TranspButton}" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Column="1" Click="BAdd_Click" Margin="-5,0,0,0" ToolTip="{DynamicResource Tooltipid1}">
+                                <Border>
+                                    <Path Data="{StaticResource DashAdd}" Fill="{DynamicResource OnDarkFontColor}" Stretch="Uniform"/>
+                                </Border>
+                            </Button>
+                        </Grid>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+            <Label Content="{DynamicResource Editid4}" Margin="24,0,22,0" VerticalAlignment="Top" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="{DynamicResource OnLightFontColor}"/>
+            <Label Content="{DynamicResource Editid5}" Margin="24,49,22,0" VerticalAlignment="Top" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="{DynamicResource OnLightFontColor}"/>
+        </Grid>
+        <ScrollViewer x:Name="stackscroll" Margin="207,55,10,10"/>
+        <Label Content="{Binding SelectedItem.Name, ElementName=Lmodels}" Margin="202,9,10,0" VerticalAlignment="Top" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Segoe UI Black" FontSize="20" Foreground="{DynamicResource OnLightFontColor}" Height="41"/>
+    </Grid>
+</UserControl>

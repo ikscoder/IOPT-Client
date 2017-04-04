@@ -1,0 +1,19 @@
+﻿<UserControl x:Class="Client.Controls.CDString"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Client.Controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="270" d:DesignWidth="180" BorderBrush="{DynamicResource MainColor}" BorderThickness="2">
+    <Grid Background="{DynamicResource AlternativeBackgroundColor}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="90*"/>
+            <RowDefinition Height="180*"/>
+        </Grid.RowDefinitions>
+        <Label x:Name="Title" Content="TTl" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="{DynamicResource OnDarkFontColor}" Background="{DynamicResource MainColor}" FontFamily="{DynamicResource FontFamilyHighlight}" FontWeight="Bold" FontSize="22"/>
+        <TextBox x:Name="TValue" Height="121" Margin="10,10,10,0" Grid.Row="1" Text="" VerticalAlignment="Top" VerticalContentAlignment="Bottom"/>
+
+
+    </Grid>
+</UserControl>

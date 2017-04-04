@@ -1,0 +1,52 @@
+﻿<UserControl x:Class="Client.Controls.UDNumber"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Client"
+             xmlns:oxy="http://oxyplot.org/wpf"
+             xmlns:controls="clr-namespace:Client.Controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="360" BorderThickness="2" BorderBrush="{DynamicResource MainColor}" Foreground="{DynamicResource OnLightFontColor}" Margin="4" Width="400">
+    <Grid Background="{DynamicResource AlternativeBackgroundColor}" Height="360" Width="400">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="9*" />
+            <ColumnDefinition Width="3*" />
+
+        </Grid.ColumnDefinitions>
+        <controls:RoundProgressBar x:Name="VMax" Text="{Binding RelativeSource={RelativeSource Self}, Path=Value, StringFormat={}{0:n1}}" FontSize="22px" Width="90" Height="90" Grid.Column="1" VerticalAlignment="Top" Margin="0,2,0,0" EmptySegmentColor="#8bc34a"/>
+        <controls:RoundProgressBar x:Name="VAvg" Text="{Binding RelativeSource={RelativeSource Self}, Path=Value, StringFormat={}{0:n1}}" FontSize="22px" Width="90" Height="90" Grid.Column="1" VerticalAlignment="Center" Margin="0,122,0,144" EmptySegmentColor="#FFFDD835"/>
+        <controls:RoundProgressBar x:Name="VMin" Text="{Binding RelativeSource={RelativeSource Self}, Path=Value, StringFormat={}{0:n1}}" FontSize="22px" Width="90" Height="90" Grid.Column="1" VerticalAlignment="Bottom" Margin="0,0,0,26" EmptySegmentColor="#FFF44336"/>
+        <Label x:Name="labelMin" Content="{DynamicResource Viewid9}" VerticalAlignment="Bottom" Grid.Column="1" Foreground="{DynamicResource OnLightFontColor}" FontFamily="{DynamicResource FontFamilyMain}" FontSize="{DynamicResource FontSizeNormal}" HorizontalContentAlignment="Center" BorderBrush="{DynamicResource MainColor}" BorderThickness="0" Margin="0,0,0,79"/>
+        <Label x:Name="labelMax" Content="{DynamicResource Viewid10}" Margin="0,12,0,0" VerticalAlignment="Top" Foreground="{DynamicResource OnLightFontColor}" FontFamily="{DynamicResource FontFamilyMain}" FontSize="{DynamicResource FontSizeNormal}" HorizontalContentAlignment="Center" Grid.Column="1" BorderThickness="0" BorderBrush="{DynamicResource MainColor}"/>
+        <Label x:Name="labelMedian" Content="0.0" Margin="0,176,0,153" VerticalAlignment="Center" Foreground="{DynamicResource MainColor}" FontFamily="{DynamicResource FontFamilyMain}" FontSize="{DynamicResource FontSizeNormal}" HorizontalContentAlignment="Center" Grid.Column="1" BorderThickness="0" BorderBrush="{DynamicResource MainColor}" ToolTip="{DynamicResource Viewid11}"/>
+        <Label x:Name="labelAvg" Content="{DynamicResource Viewid8}" Margin="0,131,0,198" VerticalAlignment="Center" Foreground="{DynamicResource OnLightFontColor}" FontFamily="{DynamicResource FontFamilyMain}" FontSize="{DynamicResource FontSizeNormal}" HorizontalContentAlignment="Center" Grid.Column="1" BorderThickness="0" BorderBrush="{DynamicResource MainColor}"/>
+        <Label x:Name="Title" Content="Title" VerticalAlignment="Top" Foreground="{DynamicResource OnDarkFontColor}" BorderBrush="{DynamicResource MainColor}" BorderThickness="0,0,2,2" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="75" FontFamily="{DynamicResource FontFamilyHighlight}" FontSize="22" FontWeight="Bold" Margin="0,0,73,0" Background="{DynamicResource MainColor}"/>
+        <controls:RoundProgressBar x:Name="VValue" Text="{Binding RelativeSource={RelativeSource Self}, Path=Value, StringFormat={}{0:n1}}" FontSize="40" Grid.Column="0" Margin="30,80,30,60" Width="190" Height="190" StrokeThickness="20" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        <Label x:Name="labelValue" Content="{DynamicResource Viewid4}" VerticalAlignment="Bottom" Foreground="{DynamicResource OnLightFontColor}" FontFamily="{DynamicResource FontFamilyMain}" FontSize="{DynamicResource FontSizeBig}" HorizontalContentAlignment="Center" BorderBrush="{DynamicResource MainColor}" BorderThickness="0" Margin="10,0,10,10" Height="45" VerticalContentAlignment="Center"/>
+        <Popup x:Name="pop" AllowsTransparency="True" Placement="Mouse" HorizontalOffset="-200" IsOpen="False" StaysOpen="True" PopupAnimation="Fade">
+            <Grid>
+                <Button x:Name="BExit" Width="35" Style="{DynamicResource TranspButton}" Margin="0,20,555,0" VerticalAlignment="Top" Height="35" HorizontalAlignment="Right" Click="BExit_Click" Panel.ZIndex="10">
+                    <Border>
+                        <Path Data="{StaticResource Exit}" Fill="{DynamicResource MainColor}" Stretch="Uniform">
+                        </Path>
+                    </Border>
+                </Button>
+                <oxy:Plot x:Name="Plot" Foreground="{DynamicResource OnLightFontColor}" DefaultTrackerTemplate="{DynamicResource OxyLineTemplate}" Width="600" Height="300" >
+                    <oxy:Plot.Axes>
+                        <oxy:DateTimeAxis MajorGridlineStyle="None" MinorGridlineStyle="None" IntervalLength="80" Title="{DynamicResource Viewid7}"/>
+                        <oxy:LinearAxis MajorGridlineStyle="None" MinorGridlineStyle="None" IntervalLength="80" Title="{DynamicResource Viewid6}"/>
+                    </oxy:Plot.Axes>
+                    <oxy:LineSeries x:Name="lineserie" Color="#F62A00" StrokeThickness="1" MarkerSize="3" LineStyle="Solid" MarkerType="Cross"/>
+                </oxy:Plot>
+            </Grid>
+        </Popup>
+
+        <Button x:Name="BChart" Width="63" Style="{DynamicResource TranspButton}" Margin="0,0,5,0" VerticalAlignment="Top" Height="75" HorizontalAlignment="Right" Click="BExit_Click">
+            <Border>
+                <Path Data="{StaticResource Chart}" Fill="{DynamicResource MainColor}" Stretch="Uniform">
+                </Path>
+            </Border>
+        </Button>
+    </Grid>
+</UserControl>

@@ -1,0 +1,27 @@
+﻿<UserControl x:Class="Client.Pages.ModelsTable"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Client.Pages"
+             mc:Ignorable="d" 
+             d:DesignHeight="500" d:DesignWidth="1000">
+    <Grid x:Name="GMain" Background="{DynamicResource BackgroundColor}" UseLayoutRounding="True">
+        <DataGrid x:Name="DGProp" Margin="10" DataContext="{Binding}" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="{DynamicResource Viewid1}" Width="*"
+                             Binding="{Binding ModelName}"/>
+                <DataGridTextColumn Header="{DynamicResource Viewid2}" Width="*"
+                             Binding="{Binding ObjectName}"/>
+                <DataGridTextColumn Header="{DynamicResource Viewid3}" Width="*"
+                             Binding="{Binding PropertyName}"/>
+                <DataGridTextColumn Header="{DynamicResource Viewid4}" Width="*"
+                             Binding="{Binding Value}"/>
+                <DataGridTextColumn Header="{DynamicResource Editid3}" Width="*"
+                             Binding="{Binding Type}"/>
+                <DataGridTextColumn Header="{DynamicResource Viewid5}" Width="*"
+                             Binding="{Binding Listeners}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</UserControl>
